@@ -11,7 +11,8 @@
 
 ## some of the questions:
 
-***1. How many active users are there in the data set?***
+**1. How many active users are there in the data set?**
+---
     ``` solution: [
         {
             $match: {
