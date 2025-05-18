@@ -124,3 +124,50 @@
 ]
 
 ```
+
+---
+
+### whenever we're operating the data in the case of arrays, we first rip a part those array, spread it thorough, using ***$unwind***
+
+**7. What is the average numbers of tags per user?**
+
+```
+    [
+        {
+            $unwind: {
+            path: "$tags",
+            }
+        },
+        {
+            $group: {
+            _id: "$_id",
+                numberOfTags: {$sum: 1}
+            }
+        },
+        {
+            $group: {
+            _id: null,
+            averageNumberOfTags: {$avg: "$numberOfTags"}
+            }
+        }
+    ]
+
+
+    Method - II
+    <hr>
+    [
+        {
+            $addFields: {
+                numberOfTags: {
+                    $size: {$ifNull: ["$tags", []]}
+                }
+            }
+        },
+        {
+            $group: {
+                _id: null,
+                averageNumberOfTags: {$avg: "$numberOfTags"}
+            }
+        }
+    ]
+```
