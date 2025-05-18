@@ -67,3 +67,60 @@
         }
     ]
 ```
+
+---
+
+**4. find the total number of males and females**
+
+```
+    [
+        {
+            $group: {
+            _id: "$gender",
+                genderCount: {
+                    $sum: 1
+                }
+            }
+        }
+    ]
+```
+
+---
+
+**5. Which country has the highest number of registered users?**
+
+```
+    [
+        {
+            $group: {
+            _id: "$company.location.country",
+                userCount: {
+                    $sum: 1
+                }
+            }
+        }, 
+        {
+            $sort: {
+                userCount: -1 
+            }
+        },
+        {
+            $limit: 5
+        }
+    ]
+```
+
+---
+
+**6. List all unique eye colors present in the collection**
+
+```
+[
+  {
+    $group: {
+      _id: "$eyeColor",
+    }
+  }
+]
+
+```
