@@ -154,7 +154,7 @@
 
 
     Method - II
-    <hr>
+    </hr>
     [
         {
             $addFields: {
