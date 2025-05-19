@@ -280,3 +280,33 @@
   }
 ]
 ```
+
+---
+
+**14. How many users have 'ad' as the second tag in their list of tags?**
+
+```
+[
+  {
+    $match: {
+      "tags.1": 'ad'
+    }
+  },
+  {
+    $count: 'secondTagAd'
+  }
+]
+
+```
+
+**15. Find users who have both 'enim' and 'id' as their tags?**
+
+```
+[
+  {
+    $match: {
+      tags: {$all: ["enim", "ad"]}
+    }
+  }
+]
+```
