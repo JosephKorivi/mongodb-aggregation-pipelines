@@ -227,3 +227,56 @@
 ]
 
 ```
+
+---
+
+**11. Who has Registered the most Recently?**
+
+```
+[
+  {
+    $sort: {
+      registered: 1
+    }
+  }
+]
+```
+---
+
+**12. Categorize the user by favoriteFruit**
+
+```
+[
+  {
+    $sort: {
+      registered: 1
+    }
+  },
+  {
+    $limit: 5
+  }, 
+  {
+    $project: {
+      name: 1,
+      registered: 1,
+      favoriteFruit: 1
+    }
+  }
+]
+
+```
+
+--- 
+
+**13. Categorize the user by their favoriteFruit**
+
+```
+[
+  {
+    $group: {
+      _id: "$favoriteFruit",
+      users: { $push: "$name" }
+    }
+  }
+]
+```
