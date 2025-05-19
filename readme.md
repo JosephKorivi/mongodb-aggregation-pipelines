@@ -298,6 +298,7 @@
 ]
 
 ```
+---
 
 **15. Find users who have both 'enim' and 'id' as their tags?**
 
@@ -306,6 +307,25 @@
   {
     $match: {
       tags: {$all: ["enim", "ad"]}
+    }
+  }
+]
+```
+
+---
+
+**16. List all the companies located in the USA with their corresponding user count**
+
+```
+[
+  {
+    $match: {
+      "company.location.country": "USA"
+    }
+  }, {
+    $group: {
+      _id: null,
+      userCount: {$sum: 1}
     }
   }
 ]
