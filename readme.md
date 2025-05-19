@@ -170,3 +170,60 @@
         }
     ]
 ```
+
+---
+
+**8. How many users have 'enim' as one of their age?**
+
+```
+[
+  {
+    $match: {
+      tags: "enim",
+    }
+  },
+  {
+    $count: 'userWithEnimTag'
+  }
+]
+```
+
+---
+
+**9. what are the names and age of the users who are inactive and have 'velit' as a tag?**
+
+```
+[
+  {
+    $match: {
+      isActive: false,
+      tags: "velit"
+    }
+  },
+  {
+    $project: {
+      name: 1, age: 1
+    }
+  }
+]
+```
+
+---
+
+**10. How many users have phone number starting with (+1) 940?**
+
+
+```
+
+[
+  {
+    $match: {
+      "company.phone": /^\+1 \(940\)/
+    }
+  },
+  {
+    $count: 'userswithSpecialPhoneNumber'
+  }
+]
+
+```
